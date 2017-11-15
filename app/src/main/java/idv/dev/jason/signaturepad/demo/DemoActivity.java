@@ -3,9 +3,8 @@ package idv.dev.jason.signaturepad.demo;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -37,13 +36,9 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.d("TAG", "requestCode " + requestCode);
-        Log.d("TAG", "resultCode " + resultCode);
         if (data != null)
         {
-            Log.d("TAG", "data " + data.toString());
-            file = new File(data.getStringExtra("KEY_FILE_PATH"));
-            Log.d("TAG", file.toString());
+            file = new File(data.getStringExtra(SignaturePadActivity.KEY_FILE_PATH));
 
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inPreferredConfig = Bitmap.Config.ARGB_8888;
@@ -58,9 +53,9 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         Intent intent = new Intent(this, SignaturePadActivity.class);
         if (null != file && file.exists())
-            intent.putExtra("KEY_FILE_PATH", file.getAbsolutePath());
+            intent.putExtra(SignaturePadActivity.KEY_FILE_PATH, file.getAbsolutePath());
 
-        startActivityForResult(intent, 0x01);
+        startActivityForResult(intent, SignaturePadActivity.REQUEST_CODE);
     }
 
 }

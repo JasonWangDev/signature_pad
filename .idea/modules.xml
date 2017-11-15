@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SignaturePad.iml" filepath="$PROJECT_DIR$/SignaturePad.iml" />
+      <module fileurl="file://C:\JasonWork\Respository\signature_pad\SignaturePad.iml" filepath="C:\JasonWork\Respository\signature_pad\SignaturePad.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\JasonWork\Respository\signature_pad\app\app.iml" filepath="C:\JasonWork\Respository\signature_pad\app\app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/signature_pad.iml" filepath="$PROJECT_DIR$/signature_pad.iml" />
       <module fileurl="file://$PROJECT_DIR$/signature_pad_library/signature_pad_library.iml" filepath="$PROJECT_DIR$/signature_pad_library/signature_pad_library.iml" />
+      <module fileurl="file://C:\JasonWork\Respository\signature_pad\signature_pad_library\signature_pad_library.iml" filepath="C:\JasonWork\Respository\signature_pad\signature_pad_library\signature_pad_library.iml" />
     </modules>
   </component>
 </project>

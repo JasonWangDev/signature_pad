@@ -24,11 +24,13 @@ public class SignaturePadActivity extends AppCompatActivity
                                   implements SignaturePad.OnSignedListener,
                                              View.OnClickListener {
 
+    public static final int REQUEST_CODE = 0x01;
+
+    public static final int RESULT_CODE = 0x01;
+
     public static final String KEY_FILE_PATH = "KEY_FILE_PATH";
 
     private boolean isSigned;
-
-    private String filePath;
 
     private SignaturePad signaturePad;
 
@@ -49,14 +51,7 @@ public class SignaturePadActivity extends AppCompatActivity
         btnClear = findViewById(R.id.btn_clear);
         btnSubmit = findViewById(R.id.btn_submit);
 
-
-        filePath = getIntent().getStringExtra(KEY_FILE_PATH);
-        if (null != filePath)
-        {
-            Bitmap bitmap = getBitmapByFilePath(filePath);
-            if (null != bitmap)
-                signaturePad.setSignatureBitmap(bitmap);
-        }
+        setSignatureImageFormIntentExtra();
     }
 
     @Override
@@ -105,7 +100,7 @@ public class SignaturePadActivity extends AppCompatActivity
                     Intent intent = new Intent();
                     intent.putExtra(KEY_FILE_PATH, file.getAbsolutePath());
 
-                    setResult(0x02, intent);
+                    setResult(RESULT_CODE, intent);
 
                     finish();
                 }
@@ -131,7 +126,17 @@ public class SignaturePadActivity extends AppCompatActivity
     }
 
 
-    private Bitmap getBitmapByFilePath(String path) {
+    private void setSignatureImageFormIntentExtra() {
+        String filePath = getIntent().getStringExtra(KEY_FILE_PATH);
+        if (null != filePath)
+        {
+            Bitmap bitmap = filePathToBitmap(filePath);
+            if (null != bitmap)
+                signaturePad.setSignatureBitmap(bitmap);
+        }
+    }
+
+    private Bitmap filePathToBitmap(String path) {
         if (null == path)
             return null;
 
